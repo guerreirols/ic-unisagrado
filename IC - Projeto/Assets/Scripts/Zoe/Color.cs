@@ -3,15 +3,14 @@ using UnityEngine;
 
 public class Color : MonoBehaviour
 {
-    private static Animator zoeAnimator;
-    private static bool hasAudio;
+    [SerializeField]
+    private Animator zoeColorAnimator;
 
-    private static AudioSource currentAudio;
+    private AudioSource currentAudio;
 
-    void Start()
-    {
-        zoeAnimator = GetComponent<Animator>();
-    }
+    private bool hasAudio;
+
+    private string isTalkingString = "isTalking";
 
     void Update()
     {
@@ -19,30 +18,16 @@ public class Color : MonoBehaviour
         {
             if (!currentAudio.isPlaying)
             {
-                zoeAnimator.SetBool("isTalking", false);
+                zoeColorAnimator.SetBool(isTalkingString, false);
                 hasAudio = false;
             }
         }
     }
 
-    public static void IsTalking(AudioSource audio)
-    {
-        currentAudio = audio;
-        hasAudio = true;
-
-        zoeAnimator.SetBool("isTalking", true);
-    }
-
     public void OnZoeSaid(AudioSource currentAudio)
     {
-        print(currentAudio);
-
-        while (currentAudio.isPlaying)
-        {
-            zoeAnimator.SetBool("isTalking", true);
-            //hasAudio = false;
-        }
-
-        zoeAnimator.SetBool("isTalking", false);
+        this.currentAudio = currentAudio;
+        zoeColorAnimator.SetBool(isTalkingString, true);
+        hasAudio = true;  
     }
 }

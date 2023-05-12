@@ -16,10 +16,19 @@ public class Events : MonoBehaviour
     [SerializeField]
     Color color;
 
+    [SerializeField]
+    SpaceshipMovement spaceshipMovement;
+
+    [SerializeField]
+    PlanetEnter planetEnter;
+
     void Start()
     {
         audioInput.ChosenPlanet += planetTransition.OnChosenPlanet;
         audioInput.PlayerCommand += audioOutput.OnPlayerCommand;
+        audioInput.SaidToComeInPlanet += planetEnter.OnSaidToComeInPlanet;
         audioOutput.ZoeSaid += color.OnZoeSaid;
+        planetTransition.WentToThePlanet += spaceshipMovement.OnWentToThePlanet;
+        planetEnter.SaidToLand += spaceshipMovement.OnSaidToLand;
     }
 }

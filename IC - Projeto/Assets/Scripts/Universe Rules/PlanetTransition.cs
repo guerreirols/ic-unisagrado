@@ -20,7 +20,8 @@ public class PlanetTransition : MonoBehaviour
 
     private string inTransitionString = "inTransition";
 
-    public static bool inTransition = false;
+    public delegate void WentToThePlanetHandler(bool inTransition, GameObject planet);
+    public event WentToThePlanetHandler WentToThePlanet;
 
 
     public void Start()
@@ -35,8 +36,6 @@ public class PlanetTransition : MonoBehaviour
 
     IEnumerator TimeInTransition(string planet)
     {
-        inTransition = true;
-
         ultraSpeedParticles.Play();
         SetAnimations(true);
         ActivePlanet(planet);
@@ -46,7 +45,7 @@ public class PlanetTransition : MonoBehaviour
         ultraSpeedParticles.Stop();
         SetAnimations(false);
 
-        inTransition = false;
+        WentToThePlanet(false, null);
     }
 
     private void SetAnimations(bool condition)
@@ -64,6 +63,7 @@ public class PlanetTransition : MonoBehaviour
             if (planetObject.CompareTag(planet))
             {
                 planetObject.SetActive(true);
+                WentToThePlanet(true, planetObject);
             }
         }
     }

@@ -14,9 +14,11 @@
     #endregion
 
     #region Zoe
-    public const string ZOE_ZOE = "zoe";
-    public const string ZOE_ZOI = "zoi";
+    public const string ZOE_ZOE = "oi";
+    public const string ZOE_ZOI = "olá";
     public const string ZOE_TAKE_ME_TO_MARS = "me leve para marte";
     public const string ZOE_TAKE_ME_TO_SPACE = "vamos voltar ao espaço";
+
+    public const string ZOE_ENTER_IN_THIS_PLANET = "vamos pousar";
     #endregion
 }
