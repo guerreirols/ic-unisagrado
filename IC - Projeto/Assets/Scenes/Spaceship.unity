@@ -259,13 +259,14 @@ GameObject:
   m_Component:
   - component: {fileID: 10442984}
   - component: {fileID: 10442985}
+  - component: {fileID: 10442986}
   m_Layer: 0
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &10442984
 Transform:
   m_ObjectHideFlags: 0
@@ -341,6 +342,25 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!95 &10442986
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10442983}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 12cb3f9b6fcc7e34da789aca7095e18e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &41543500
 GameObject:
   m_ObjectHideFlags: 0
@@ -1343,6 +1363,7 @@ GameObject:
   m_Component:
   - component: {fileID: 705507995}
   - component: {fileID: 705507994}
+  - component: {fileID: 705507996}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -1425,6 +1446,25 @@ Transform:
   m_Father: {fileID: 1081040828}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 33.742, y: -30.000002, z: 0}
+--- !u!95 &705507996
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705507993}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 300422d1c55c00148823a19bb5f10dbe, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!95 &715500902 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 297553667533371224, guid: a173bd2fde7592c45a08444c8fc77508,
@@ -1460,7 +1500,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 912078817}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &768335387
 MonoBehaviour:
@@ -1739,7 +1779,6 @@ Transform:
   m_LocalPosition: {x: -7.931792, y: -9.525635, z: 36.695118}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 983075124}
   - {fileID: 1223266668}
   - {fileID: 768335386}
   m_Father: {fileID: 153371109}
@@ -1979,7 +2018,7 @@ GameObject:
   - component: {fileID: 983075124}
   - component: {fileID: 983075125}
   m_Layer: 0
-  m_Name: AudioInput
+  m_Name: '**AudioInput Script (Dont Destroy)'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1992,12 +2031,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 983075123}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.633883, y: -12.057644, z: 10.524654}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 912078817}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &983075125
 MonoBehaviour:
@@ -2158,7 +2197,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 912078817}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1223266669
 MonoBehaviour:
@@ -2269,7 +2308,7 @@ MonoBehaviour:
   audioOutput: {fileID: 1223266669}
   color: {fileID: 768335387}
   spaceshipMovement: {fileID: 1844594128}
-  planetEnter: {fileID: 1685860491}
+  landing: {fileID: 1685860491}
 --- !u!4 &1347243947
 Transform:
   m_ObjectHideFlags: 0
@@ -7402,7 +7441,7 @@ GameObject:
   - component: {fileID: 1685860490}
   - component: {fileID: 1685860491}
   m_Layer: 0
-  m_Name: PlanetEnter
+  m_Name: Landing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7434,8 +7473,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf0b31e64aeedef43a4a7b39f8804a56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spaceshipAnimator: {fileID: 0}
-  secondsOnLanding: 3
+  spaceshipAnimator: {fileID: 1708517404}
+  zoeAnimator: {fileID: 715500902}
+  directionalLightAnimator: {fileID: 705507996}
+  spaceshipLightAnimator: {fileID: 0}
+  secondsOnLanding: 5
+  planets:
+  - {fileID: 1164979337}
+  - {fileID: 1477203265}
+  - {fileID: 1028840756}
+  - {fileID: 1936106470}
 --- !u!4 &1692316865 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4416351815745354, guid: 50d56e9319acd7440a97582160b01520,
@@ -7834,17 +7881,17 @@ PrefabInstance:
     - target: {fileID: 7686268775316085282, guid: a173bd2fde7592c45a08444c8fc77508,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.283
+      value: -0.31
       objectReference: {fileID: 0}
     - target: {fileID: 7686268775316085282, guid: a173bd2fde7592c45a08444c8fc77508,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.491
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 7686268775316085282, guid: a173bd2fde7592c45a08444c8fc77508,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.913
+      value: 7.063
       objectReference: {fileID: 0}
     - target: {fileID: 7686268775316085282, guid: a173bd2fde7592c45a08444c8fc77508,
         type: 3}

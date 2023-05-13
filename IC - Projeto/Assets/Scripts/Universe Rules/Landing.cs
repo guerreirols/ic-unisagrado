@@ -1,15 +1,23 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlanetEnter : MonoBehaviour
+public class Landing : MonoBehaviour
 {
     [SerializeField]
     private Animator spaceshipAnimator;
 
     [SerializeField]
+    private Animator zoeAnimator;
+
+    [SerializeField]
+    private Animator directionalLightAnimator;
+
+    [SerializeField]
     private int secondsOnLanding;
+
+    [SerializeField]
+    private GameObject[] planets;
 
     public delegate void SaidToLandHandler(bool onLand);
     public event SaidToLandHandler SaidToLand;
@@ -22,10 +30,39 @@ public class PlanetEnter : MonoBehaviour
     IEnumerator TimeInLanding(int idPlanet)
     {
         SaidToLand(true);
+        SetAnimation(1);
+        StartCoroutine(DisablePlanet());
 
         yield return new WaitForSeconds(secondsOnLanding);
 
         changeScene(idPlanet);
+    }
+
+    IEnumerator DisablePlanet()
+    {
+        yield return new WaitForSeconds(2);
+
+        SetAnimation(2);
+
+        foreach (GameObject planetObject in planets)
+        {
+            planetObject.SetActive(false);
+        }
+    }
+
+    private void SetAnimation(int stage)
+    {
+        string onLandingString = "onLanding";
+
+        if(stage == 1)
+        {
+            spaceshipAnimator.SetBool(onLandingString, true);
+            zoeAnimator.SetBool(onLandingString, true);
+        }
+        else if(stage == 2)
+        {
+            directionalLightAnimator.SetBool(onLandingString, true);
+        }
     }
 
     private void changeScene(int idPlanet)

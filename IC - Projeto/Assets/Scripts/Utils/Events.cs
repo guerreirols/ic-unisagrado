@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Events : MonoBehaviour
 {
@@ -20,15 +18,15 @@ public class Events : MonoBehaviour
     SpaceshipMovement spaceshipMovement;
 
     [SerializeField]
-    PlanetEnter planetEnter;
+    Landing landing;
 
     void Start()
     {
         audioInput.ChosenPlanet += planetTransition.OnChosenPlanet;
         audioInput.PlayerCommand += audioOutput.OnPlayerCommand;
-        audioInput.SaidToComeInPlanet += planetEnter.OnSaidToComeInPlanet;
+        audioInput.SaidToComeInPlanet += landing.OnSaidToComeInPlanet;
         audioOutput.ZoeSaid += color.OnZoeSaid;
         planetTransition.WentToThePlanet += spaceshipMovement.OnWentToThePlanet;
-        planetEnter.SaidToLand += spaceshipMovement.OnSaidToLand;
+        landing.SaidToLand += spaceshipMovement.OnSaidToLand;
     }
 }

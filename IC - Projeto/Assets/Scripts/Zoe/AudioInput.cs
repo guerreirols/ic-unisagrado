@@ -12,8 +12,6 @@ public class AudioInput : MonoBehaviour
     private bool zoeIsListening;
     private static bool objectAlreadyExists = false;
 
-    /* Mercury = 1 | Venus = 2 | Earth = 3 | Mars = 4      *
-     * Jupiter = 5 | Saturn = 6 | Uranus = 7 | Neptune = 8 */
     private int idPlanet;
 
     public delegate void ChosenPlanetHandler(string msg);
@@ -40,12 +38,20 @@ public class AudioInput : MonoBehaviour
 
     private void Start() 
     {
-
         if(actions.Count() == 0)
         {
             actions.Add(Texts.ZOE_ZOI, ZoeAction);
             actions.Add(Texts.ZOE_ZOE, ZoeAction);
+
+            actions.Add(Texts.ZOE_TAKE_ME_TO_MERCURY, GoToMercuryAction);
+            actions.Add(Texts.ZOE_TAKE_ME_TO_VENUS, GoToVenusAction);
+            actions.Add(Texts.ZOE_TAKE_ME_TO_EARTH, GoToEarthAction);
             actions.Add(Texts.ZOE_TAKE_ME_TO_MARS, GoToMarsAction);
+            actions.Add(Texts.ZOE_TAKE_ME_TO_JUPITER, GoToJupiterAction);
+            actions.Add(Texts.ZOE_TAKE_ME_TO_SATURN, GoToSaturnAction);
+            actions.Add(Texts.ZOE_TAKE_ME_TO_URANUS, GoToUranusAction);
+            actions.Add(Texts.ZOE_TAKE_ME_TO_NEPTUNE, GoToNeptuneAction);
+
             actions.Add(Texts.ZOE_ENTER_IN_THIS_PLANET, EnterInThisPlanetAction);
 
             actions.Add(Texts.ZOE_TAKE_ME_TO_SPACE, SpaceAction);
@@ -58,19 +64,91 @@ public class AudioInput : MonoBehaviour
 
     private void ZoeAction()
     {
-        SetZoeListening();
+        zoeIsListening = true;
         PlayerCommand(1);
+    }
+
+    #region Planets Commands
+    private void GoToMercuryAction()
+    {
+        if (zoeIsListening)
+        {
+            ChosenPlanet(Texts.EVENTS_MERCURY);
+            idPlanet = 1;
+            SetZoeListening();
+        }
+    }
+
+    private void GoToVenusAction()
+    {
+        if (zoeIsListening)
+        {
+            ChosenPlanet(Texts.EVENTS_VENUS);
+            idPlanet = 2;
+            SetZoeListening();
+        }
+    }
+
+    private void GoToEarthAction()
+    {
+        if (zoeIsListening)
+        {
+            ChosenPlanet(Texts.EVENTS_EARTH);
+            idPlanet = 3;
+            SetZoeListening();
+        }
     }
 
     private void GoToMarsAction()
     {
-        if(zoeIsListening)
+        if (zoeIsListening)
         {
-            ChosenPlanet(Texts.EVENTS_MARS);         
+            ChosenPlanet(Texts.EVENTS_MARS);
             idPlanet = 4;
             SetZoeListening();
-        }     
+        }
     }
+
+    private void GoToJupiterAction()
+    {
+        if (zoeIsListening)
+        {
+            ChosenPlanet(Texts.EVENTS_JUPITER);
+            idPlanet = 5;
+            SetZoeListening();
+        }
+    }
+
+    private void GoToSaturnAction()
+    {
+        if (zoeIsListening)
+        {
+            ChosenPlanet(Texts.EVENTS_SATURN);
+            idPlanet = 6;
+            SetZoeListening();
+        }
+    }
+
+    private void GoToUranusAction()
+    {
+        if (zoeIsListening)
+        {
+            ChosenPlanet(Texts.EVENTS_URANUS);
+            idPlanet = 7;
+            SetZoeListening();
+        }
+    }
+
+    private void GoToNeptuneAction()
+    {
+        if (zoeIsListening)
+        {
+            ChosenPlanet(Texts.EVENTS_NEPTUNE);
+            idPlanet = 8;
+            SetZoeListening();
+        }
+    }
+    #endregion
 
     private void EnterInThisPlanetAction()
     {
@@ -102,6 +180,3 @@ public class AudioInput : MonoBehaviour
         actions[speech.text].Invoke();
     }
 }
-
-
-

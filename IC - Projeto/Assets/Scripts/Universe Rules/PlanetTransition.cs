@@ -23,7 +23,6 @@ public class PlanetTransition : MonoBehaviour
     public delegate void WentToThePlanetHandler(bool inTransition, GameObject planet);
     public event WentToThePlanetHandler WentToThePlanet;
 
-
     public void Start()
     {
         ultraSpeedParticles.Stop();
