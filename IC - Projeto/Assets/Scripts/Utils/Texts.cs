@@ -6,7 +6,14 @@
 
     #region Scenes
     public const string SCENES_SPACESHIP = "Spaceship";
+    public const string SCENES_MERCURY = "Mercury";
+    public const string SCENES_VENUS = "Venus";
+    public const string SCENES_EARTH = "Earth";
     public const string SCENES_MARS = "Mars";
+    public const string SCENES_JUPITER = "Jupiter";
+    public const string SCENES_SATURN = "Saturn";
+    public const string SCENES_URANUS = "Uranus";
+    public const string SCENES_NEPTUNE = "Neptune";
     #endregion
 
     #region Events
@@ -22,7 +29,7 @@
 
     #region Zoe
     //call zoe
-    public const string ZOE_ZOE = "oi";
+    public const string ZOE_ZOE = "reto";
     public const string ZOE_ZOI = "olá";
     
     //planets

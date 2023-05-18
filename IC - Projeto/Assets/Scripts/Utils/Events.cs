@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Events : MonoBehaviour
 {
@@ -22,11 +23,21 @@ public class Events : MonoBehaviour
 
     void Start()
     {
-        audioInput.ChosenPlanet += planetTransition.OnChosenPlanet;
-        audioInput.PlayerCommand += audioOutput.OnPlayerCommand;
-        audioInput.SaidToComeInPlanet += landing.OnSaidToComeInPlanet;
-        audioOutput.ZoeSaid += color.OnZoeSaid;
-        planetTransition.WentToThePlanet += spaceshipMovement.OnWentToThePlanet;
-        landing.SaidToLand += spaceshipMovement.OnSaidToLand;
+        switch(SceneManager.GetActiveScene().name)
+        {
+            case Texts.SCENES_SPACESHIP:
+                audioInput.ChosenPlanet += planetTransition.OnChosenPlanet;
+                audioInput.PlayerCommand += audioOutput.OnPlayerCommand;
+                audioInput.SaidToComeInPlanet += landing.OnSaidToComeInPlanet;
+                audioOutput.ZoeSaid += color.OnZoeSaid;
+                planetTransition.WentToThePlanet += spaceshipMovement.OnWentToThePlanet;
+                landing.SaidToLand += spaceshipMovement.OnSaidToLand;
+                break;
+            case Texts.SCENES_MARS:
+                GameObject gameObject = GameObject.Find("**AudioOutput Script(Dont Destroy)");
+                audioOutput = gameObject.GetComponent<AudioOutput>();
+                audioOutput.ZoeSaid += color.OnZoeSaid;
+                break;
+        } 
     }
 }

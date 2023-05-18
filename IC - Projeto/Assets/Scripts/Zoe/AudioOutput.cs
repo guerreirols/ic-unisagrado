@@ -8,6 +8,21 @@ public class AudioOutput : MonoBehaviour
     public delegate void ZoeSaidHandler(AudioSource currentAudio);
     public event ZoeSaidHandler ZoeSaid;
 
+    private static bool objectAlreadyExists = false;
+
+    private void Awake()
+    {
+        if (!objectAlreadyExists)
+        {
+            objectAlreadyExists = true;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     public void OnPlayerCommand(int idCommand)
     {
         switch (idCommand)
