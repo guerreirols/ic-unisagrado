@@ -21,6 +21,9 @@ public class Events : MonoBehaviour
     [SerializeField]
     Landing landing;
 
+    [SerializeField]
+    Leaving leaving;
+
     void Start()
     {
         switch(SceneManager.GetActiveScene().name)
@@ -34,9 +37,12 @@ public class Events : MonoBehaviour
                 landing.SaidToLand += spaceshipMovement.OnSaidToLand;
                 break;
             case Texts.SCENES_MARS:
-                GameObject gameObject = GameObject.Find("**AudioOutput Script(Dont Destroy)");
-                audioOutput = gameObject.GetComponent<AudioOutput>();
+                GameObject audioOutputGameObject = GameObject.Find("**AudioOutput Script(Dont Destroy)");
+                GameObject audioInputGameObject = GameObject.Find("**AudioInput Script(Dont Destroy)");
+                audioOutput = audioOutputGameObject.GetComponent<AudioOutput>();
+                audioInput = audioInputGameObject.GetComponent<AudioInput>();
                 audioOutput.ZoeSaid += color.OnZoeSaid;
+                audioInput.LeftThePlanet += leaving.OnLeftThePlanet;
                 break;
         } 
     }

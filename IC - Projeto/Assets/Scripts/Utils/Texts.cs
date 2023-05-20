@@ -42,7 +42,7 @@
     public const string ZOE_TAKE_ME_TO_URANUS = "vamos para urano";
     public const string ZOE_TAKE_ME_TO_NEPTUNE = "vamos para netuno";
 
-    public const string ZOE_TAKE_ME_TO_SPACE = "vamos voltar ao espaço";
+    public const string ZOE_TAKE_ME_TO_SPACE = "vamos para ao espaço";
     public const string ZOE_ENTER_IN_THIS_PLANET = "vamos pousar";
     #endregion
 }

@@ -14,6 +14,8 @@ public class AudioInput : MonoBehaviour
 
     private int idPlanet;
 
+    private string currentPlanet;
+
     public delegate void ChosenPlanetHandler(string msg);
     public event ChosenPlanetHandler ChosenPlanet;
 
@@ -22,6 +24,9 @@ public class AudioInput : MonoBehaviour
 
     public delegate void PlayerCommandHandler(int idCommand);
     public event PlayerCommandHandler PlayerCommand;
+
+    public delegate void LeftThePlanetHandler(string planet);
+    public event LeftThePlanetHandler LeftThePlanet;
 
     private static bool objectAlreadyExists = false;
 
@@ -56,7 +61,7 @@ public class AudioInput : MonoBehaviour
 
             actions.Add(Texts.ZOE_ENTER_IN_THIS_PLANET, EnterInThisPlanetAction);
 
-            actions.Add(Texts.ZOE_TAKE_ME_TO_SPACE, SpaceAction);
+            actions.Add(Texts.ZOE_TAKE_ME_TO_SPACE, GoToSpaceAction);
         }
       
         keywordRecognizer = new KeywordRecognizer(actions.Keys.ToArray());
@@ -80,6 +85,7 @@ public class AudioInput : MonoBehaviour
             {
                 ChosenPlanet(planet);
                 this.idPlanet = idPlanet;
+                this.currentPlanet = planet;
                 SetZoeListening();
             }
             else
@@ -100,13 +106,17 @@ public class AudioInput : MonoBehaviour
         }
     }
 
-    private void SpaceAction()
+    private void GoToSpaceAction()
     {
-        if (zoeIsListening)
+        if (zoeIsListening && SceneManager.GetActiveScene().name != Texts.SCENES_SPACESHIP)
         {
-            SceneManager.LoadScene(Texts.SCENES_SPACESHIP);
+            LeftThePlanet(currentPlanet);
             SetZoeListening();
-        }      
+        } 
+        else if(zoeIsListening && SceneManager.GetActiveScene().name == Texts.SCENES_SPACESHIP)
+        {
+            //falar pra deixar de ser tonto
+        }
     }
 
     private void SetZoeListening()
