@@ -29,6 +29,8 @@ public class Landing : MonoBehaviour
 
     IEnumerator TimeInLanding(int idPlanet)
     {
+        AudioInput.zoeCanTalk = false;
+
         SaidToLand(true);
         SetAnimation(1);
         StartCoroutine(DisablePlanet());
@@ -67,6 +69,9 @@ public class Landing : MonoBehaviour
 
     private void changeScene(int idPlanet)
     {
+        PlanetTransition.seeingPlanet = false;
+        AudioInput.zoeCanTalk = true;
+
         switch (idPlanet)
         {
             case 1:

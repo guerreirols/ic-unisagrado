@@ -9,6 +9,10 @@ TagManager:
   - Mercury
   - Venus
   - Saturn
+  - Earth
+  - Uranus
+  - Neptune
+  - Jupiter
   layers:
   - Default
   - TransparentFX

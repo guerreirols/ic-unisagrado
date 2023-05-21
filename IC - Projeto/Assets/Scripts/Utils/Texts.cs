@@ -29,7 +29,7 @@
 
     #region Zoe
     //call zoe
-    public const string ZOE_ZOE = "reto";
+    public const string ZOE_ZOE = "auxiliar";
     public const string ZOE_ZOI = "olá";
     
     //planets

@@ -13,6 +13,7 @@ public class Leaving : MonoBehaviour
 
     public void OnLeftThePlanet(string planet)
     {
+        AudioInput.zoeCanTalk = false;
         screenAnimator.SetBool("isLeaving", true);
         leftPlanet = true;
         currentPlanet = planet;

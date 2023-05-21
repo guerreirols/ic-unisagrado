@@ -29,6 +29,7 @@ public class AudioInput : MonoBehaviour
     public event LeftThePlanetHandler LeftThePlanet;
 
     private static bool objectAlreadyExists = false;
+    public static bool zoeCanTalk = true;
 
     private void Awake()
     {
@@ -71,10 +72,13 @@ public class AudioInput : MonoBehaviour
 
     private void ZoeAction()
     {
-        StartCoroutine(TimeToTalk(1));
+        if(zoeCanTalk)
+        {
+            StartCoroutine(TimeToTalk(1));
 
-        zoeIsListening = true;
-        PlayerCommand(1);
+            zoeIsListening = true;
+            PlayerCommand(1);
+        }      
     }
 
     private void GoToPlanetAction(int idPlanet, string planet)

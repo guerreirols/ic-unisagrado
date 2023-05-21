@@ -37,7 +37,6 @@ public class Color : MonoBehaviour
             if (!currentAudio.isPlaying)
             {
                 zoeColorAnimator.SetBool(isTalkingString, false);
-                print(zoeColorAnimator);
                 hasAudio = false;
             }
         }

@@ -5,9 +5,16 @@ public class UniverseState : MonoBehaviour
     [SerializeField]
     private GameObject[] planets;
 
-    private Animator planetAnimator;
+    [SerializeField]
+    private Animator spaceshipAnimator;
 
-    private string isLeavingString = "isLeaving";
+    [SerializeField]
+    private Animator blackScreenAnimator;
+
+    [SerializeField]
+    private GameObject blackScreen;
+
+    private string onLeavingString = "onLeaving";
 
     void Start()
     {
@@ -20,12 +27,13 @@ public class UniverseState : MonoBehaviour
                 if (planetObject.CompareTag(Leaving.currentPlanet))
                 {
                     planetObject.SetActive(true);
-                    planetAnimator = planetObject.GetComponent<Animator>();
-
-                    planetAnimator.SetBool(isLeavingString, true);
-                    planetAnimator.SetBool(isLeavingString, false);
                 }
             }
+
+            spaceshipAnimator.SetBool(onLeavingString, true);
+            blackScreen.SetActive(true);
+            blackScreenAnimator.SetBool(onLeavingString, true);
+            AudioInput.zoeCanTalk = true;
         }
     }
 }
