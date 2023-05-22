@@ -48,7 +48,7 @@ public class AudioInput : MonoBehaviour
 
     private void Start() 
     {
-        //actions.Clear();
+        actions.Clear();
         if(actions.Count() == 0)
         {
             actions.Add(Texts.ZOE_ZOI, ZoeAction);

@@ -3,11 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class Events : MonoBehaviour
 {
-    [SerializeField]
-    AudioInput audioInput;
+    [Header("Geral Events")]
 
     [SerializeField]
-    PlanetTransition planetTransition;
+    AudioInput audioInput;
 
     [SerializeField]
     AudioOutput audioOutput;
@@ -15,27 +14,34 @@ public class Events : MonoBehaviour
     [SerializeField]
     Color color;
 
+    [Header("Only In a Spaceship")]
+
+    [SerializeField]
+    PlanetTransition planetTransition;
+
     [SerializeField]
     SpaceshipMovement spaceshipMovement;
 
     [SerializeField]
     Landing landing;
 
+    [Header("Only In a Planet")]
+
     [SerializeField]
     Leaving leaving;
 
     void Start()
     {
-        GameObject audioOutputGameObject = GameObject.Find("**AudioOutput Script(Dont Destroy)");
-        audioOutput = audioOutputGameObject.GetComponent<AudioOutput>();
-
+        //Geral Events
         audioInput.PlayerCommand += audioOutput.OnPlayerCommand;
         audioOutput.ZoeSaid += color.OnZoeSaid;
 
         if (SceneManager.GetActiveScene().name != Texts.SCENES_SPACESHIP)
         {
+            //Only In a Planet
             audioInput.LeftThePlanet += leaving.OnLeftThePlanet;
         } else {
+            //Only In a Spaceship
             audioInput.ChosenPlanet += planetTransition.OnChosenPlanet;
             audioInput.SaidToComeInPlanet += landing.OnSaidToComeInPlanet;
             planetTransition.WentToThePlanet += spaceshipMovement.OnWentToThePlanet;
