@@ -25,6 +25,8 @@ public class PlanetTransition : MonoBehaviour
 
     private string inTransitionSeeingPlanetString = "inTransitionSeeingPlanet";
 
+    private MeshRenderer[] saturnMeshRenders;
+
     public delegate void WentToThePlanetHandler(bool inTransition, GameObject planet);
     public event WentToThePlanetHandler WentToThePlanet;
 
@@ -39,7 +41,8 @@ public class PlanetTransition : MonoBehaviour
     }
 
     public void OnChosenPlanet(string planet)
-    {       
+    {
+
         StartCoroutine(TimeInTransition(planet));
     }
 
@@ -52,19 +55,32 @@ public class PlanetTransition : MonoBehaviour
 
         currentPlanetGameObject = GetPlanetGameObjectByTag(planet);
         currentPlanetGameObject.SetActive(true);
-        currentPlanetGameObject.GetComponent<MeshRenderer>().enabled = true;
 
+        if(currentPlanetGameObject.tag != Texts.EVENTS_SATURN)
+        {
+            currentPlanetGameObject.GetComponent<MeshRenderer>().enabled = true;
+        } 
+        else
+        {
+            saturnMeshRenders = currentPlanetGameObject.GetComponentsInChildren<MeshRenderer>();
+
+            foreach (MeshRenderer meshRenderer in saturnMeshRenders)
+            {
+                meshRenderer.enabled = true;
+            }
+        }
+        
         currentPlanetAnimator = currentPlanetGameObject.GetComponent<Animator>();
         currentPlanetAnimator.SetBool(inTransitionSeeingPlanetString, false);
         currentPlanetAnimator.SetBool(inTransitionString, true);
         WentToThePlanet(true, currentPlanetGameObject);
 
-        if (!seeingPlanet)
+        if (seeingPlanet || Leaving.leftPlanet)
         {
-            yield return new WaitForSeconds(secondsInTransition);
-        }
-        else {
             yield return StartCoroutine(TimeInTransitionWhitSeeingPlanet());
+        }
+        else {          
+            yield return new WaitForSeconds(secondsInTransition);
         }
 
         ultraSpeedParticles.Stop();
@@ -75,10 +91,16 @@ public class PlanetTransition : MonoBehaviour
         AudioInput.zoeCanTalk = true;
         seeingPlanet = true;
         previousPlanetGameObject = currentPlanetGameObject;
+        previousPlanetGameObject = currentPlanetGameObject;
     }
 
     IEnumerator TimeInTransitionWhitSeeingPlanet()
     {
+        if(previousPlanetGameObject == null)
+        {
+            previousPlanetGameObject = GetPlanetGameObjectByTag(Leaving.currentPlanet);
+        }
+
         previousPlanetAnimator = previousPlanetGameObject.GetComponent<Animator>();
         previousPlanetAnimator.SetBool(inTransitionSeeingPlanetString, true);
 

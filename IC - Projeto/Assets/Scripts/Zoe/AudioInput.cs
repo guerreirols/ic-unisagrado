@@ -28,8 +28,10 @@ public class AudioInput : MonoBehaviour
     public delegate void LeftThePlanetHandler(string planet);
     public event LeftThePlanetHandler LeftThePlanet;
 
-    private static bool objectAlreadyExists = false;
+   
     public static bool zoeCanTalk = true;
+
+    /*private static bool objectAlreadyExists = false;
 
     private void Awake()
     {
@@ -42,10 +44,11 @@ public class AudioInput : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
+    }*/
 
     private void Start() 
     {
+        //actions.Clear();
         if(actions.Count() == 0)
         {
             actions.Add(Texts.ZOE_ZOI, ZoeAction);
@@ -114,7 +117,7 @@ public class AudioInput : MonoBehaviour
     {
         if (zoeIsListening && SceneManager.GetActiveScene().name != Texts.SCENES_SPACESHIP)
         {
-            LeftThePlanet(currentPlanet);
+            LeftThePlanet(SceneManager.GetActiveScene().name);
             SetZoeListening();
         } 
         else if(zoeIsListening && SceneManager.GetActiveScene().name == Texts.SCENES_SPACESHIP)

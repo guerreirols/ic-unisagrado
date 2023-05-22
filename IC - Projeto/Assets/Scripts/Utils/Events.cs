@@ -26,24 +26,20 @@ public class Events : MonoBehaviour
 
     void Start()
     {
-        switch(SceneManager.GetActiveScene().name)
+        GameObject audioOutputGameObject = GameObject.Find("**AudioOutput Script(Dont Destroy)");
+        audioOutput = audioOutputGameObject.GetComponent<AudioOutput>();
+
+        audioInput.PlayerCommand += audioOutput.OnPlayerCommand;
+        audioOutput.ZoeSaid += color.OnZoeSaid;
+
+        if (SceneManager.GetActiveScene().name != Texts.SCENES_SPACESHIP)
         {
-            case Texts.SCENES_SPACESHIP:
-                audioInput.ChosenPlanet += planetTransition.OnChosenPlanet;
-                audioInput.PlayerCommand += audioOutput.OnPlayerCommand;
-                audioInput.SaidToComeInPlanet += landing.OnSaidToComeInPlanet;
-                audioOutput.ZoeSaid += color.OnZoeSaid;
-                planetTransition.WentToThePlanet += spaceshipMovement.OnWentToThePlanet;
-                landing.SaidToLand += spaceshipMovement.OnSaidToLand;
-                break;
-            case Texts.SCENES_MARS:
-                GameObject audioOutputGameObject = GameObject.Find("**AudioOutput Script(Dont Destroy)");
-                GameObject audioInputGameObject = GameObject.Find("**AudioInput Script(Dont Destroy)");
-                audioOutput = audioOutputGameObject.GetComponent<AudioOutput>();
-                audioInput = audioInputGameObject.GetComponent<AudioInput>();
-                audioOutput.ZoeSaid += color.OnZoeSaid;
-                audioInput.LeftThePlanet += leaving.OnLeftThePlanet;
-                break;
-        } 
+            audioInput.LeftThePlanet += leaving.OnLeftThePlanet;
+        } else {
+            audioInput.ChosenPlanet += planetTransition.OnChosenPlanet;
+            audioInput.SaidToComeInPlanet += landing.OnSaidToComeInPlanet;
+            planetTransition.WentToThePlanet += spaceshipMovement.OnWentToThePlanet;
+            landing.SaidToLand += spaceshipMovement.OnSaidToLand;
+        }
     }
 }

@@ -75,7 +75,7 @@ public class Landing : MonoBehaviour
         switch (idPlanet)
         {
             case 1:
-                //mercury
+                SceneManager.LoadScene(Texts.SCENES_MERCURY);
                 break;
             case 2:
                 //venus

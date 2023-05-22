@@ -6,20 +6,40 @@ public class PlanetLeavingScene : StateMachineBehaviour
 {
     public float keyframeTime = 0.30f;
 
+    private GameObject planetGameObject;
+
+    private MeshRenderer[] saturnMeshRenders;
+
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        planetGameObject = PlanetTransition.previousPlanetGameObject;
+
         float normalizedTime = stateInfo.normalizedTime;
 
         if (normalizedTime >= keyframeTime)
         {
-            PlanetTransition.previousPlanetGameObject.GetComponent<MeshRenderer>().enabled = false;
+            if(planetGameObject.tag != Texts.EVENTS_SATURN)
+            {
+                planetGameObject.GetComponent<MeshRenderer>().enabled = false;
+            }
+            else
+            {
+                saturnMeshRenders = planetGameObject.GetComponentsInChildren<MeshRenderer>();
+
+                foreach (MeshRenderer meshRenderer in saturnMeshRenders)
+                {
+                    meshRenderer.enabled = false;
+                }
+            }
         }
     }
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        PlanetTransition.previousPlanetGameObject.GetComponent<Animator>().SetBool("inTransitionSeeingPlanet", false);
-        PlanetTransition.previousPlanetGameObject.GetComponent<Animator>().SetBool("inTransition", true);
-        PlanetTransition.previousPlanetGameObject.SetActive(false);
+        planetGameObject = PlanetTransition.previousPlanetGameObject;
+
+        planetGameObject.GetComponent<Animator>().SetBool("inTransitionSeeingPlanet", false);
+        planetGameObject.GetComponent<Animator>().SetBool("inTransition", true);
+        planetGameObject.SetActive(false);
     }
 }

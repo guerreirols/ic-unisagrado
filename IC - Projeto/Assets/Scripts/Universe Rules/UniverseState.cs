@@ -18,6 +18,7 @@ public class UniverseState : MonoBehaviour
 
     void Start()
     {
+        //print(Leaving.currentPlanet);
         if(Leaving.leftPlanet)
         {
             foreach (GameObject planetObject in planets)
