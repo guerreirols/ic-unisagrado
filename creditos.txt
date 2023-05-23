@@ -13,6 +13,7 @@ Asteroides | Mark Dion. Disponível em <https://assetstore.unity.com/packages/3d
 Textura do Solo de Marte | 3D digital environments. Disponível em <https://assetstore.unity.com/packages/3d/environments/sci-fi/martian-surface-rocky-area-186736>. Acessado em 12. fev. 2023.
 Rochas do Solo de Marte | 3D Amber Light Store. Disponível em <https://assetstore.unity.com/packages/3d/props/4-types-of-rocks-188872>. Acessado em 12. fev. 2023.
 Textura do Solo de Mercúrio | John's Junkyard Assets. Disponível em <https://assetstore.unity.com/packages/2d/textures-materials/floors/pbr-ground-materials-2-dirt-grass-rocky-89369#description>. Acessado em 21. mai. 2023.
+Textura do Solo de Venus | John's Junkyard Assets. Disponível em <https://assetstore.unity.com/packages/2d/textures-materials/floors/pbr-ground-materials-2-dirt-grass-rocky-89369#description>. Acessado em 21. mai. 2023.
 Zoe | Lukas Bobor. Disponível em <https://assetstore.unity.com/packages/3d/characters/robots/drone-guard-175607>. Acessado em 21. abr. 2023.
 Textura dos Portões da Nave Espacial Durante um Pouso | Nobiax / Yughues. Disponível em <https://assetstore.unity.com/packages/2d/textures-materials/metals/yughues-free-metal-materials-12949> Acessado em 16. out. 2023.
 Fonte dos Textos | Google Fonts. Disponível em <https://fonts.google.com/specimen/Roboto+Mono?preview.text=Solar%20System&preview.text_type=custom>. Acessado em 22. mai. 2023.

@@ -53,7 +53,7 @@ public class Color : MonoBehaviour
 
     private void SetZoeBodyAnimation(bool status)
     {
-        if(scene != Texts.SCENES_SPACESHIP)
+        if(scene == Texts.SCENES_MERCURY || scene == Texts.SCENES_VENUS || scene == Texts.SCENES_MARS)
         {
             this.zoeBodyAnimator.SetBool(isTalkingString, status);
         }     

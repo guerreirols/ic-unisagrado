@@ -70,8 +70,13 @@ public class SpaceshipMovement : MonoBehaviour
         this.inTransition = inTransition;
     }
 
-    public void OnSaidToLand(bool onLanding)
+    public void OnSaidToLand(bool onLanding, GameObject planet)
     {
+        if (this.planet == null)
+        {
+            this.planet = planet.transform;
+        }
+
         this.onLanding = onLanding;
     }
 }

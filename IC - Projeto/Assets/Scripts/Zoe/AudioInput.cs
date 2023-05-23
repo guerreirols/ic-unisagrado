@@ -14,6 +14,8 @@ public class AudioInput : MonoBehaviour
 
     private int idPlanet;
 
+    private int idLastPlanet;
+
     private string currentPlanet;
 
     public delegate void ChosenPlanetHandler(string msg);
@@ -30,21 +32,6 @@ public class AudioInput : MonoBehaviour
 
    
     public static bool zoeCanTalk = true;
-
-    /*private static bool objectAlreadyExists = false;
-
-    private void Awake()
-    {
-        if (!objectAlreadyExists)
-        {
-            objectAlreadyExists = true;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }*/
 
     private void Start() 
     {
@@ -90,26 +77,48 @@ public class AudioInput : MonoBehaviour
         {
             if (SceneManager.GetActiveScene().name == Texts.SCENES_SPACESHIP)
             {
-                ChosenPlanet(planet);
-                this.idPlanet = idPlanet;
-                this.currentPlanet = planet;
-                SetZoeListening();
+                if(idPlanet != GlobalProperties.idPlanet)
+                {
+                    ChosenPlanet(planet);
+                    this.idPlanet = idPlanet;
+                    GlobalProperties.planetTag = planet;
+                    GlobalProperties.idPlanet = idPlanet;
+                    SetZoeListening();
+                }
+                else {
+                    PlayerCommand(4);
+                }
             }
             else
             {
-                PlayerCommand(2);
+                PlayerCommand(5);
             }
         }
     }
 
     private void EnterInThisPlanetAction()
     {
+        idPlanet = GlobalProperties.idPlanet;
+
         if(zoeIsListening && idPlanet != 0)
         {
-            PlayerCommand(3);
-            SaidToComeInPlanet(idPlanet);
-            idPlanet = 0;
-            SetZoeListening();
+            if(idPlanet == 1 || idPlanet == 2 ||  idPlanet == 4)
+            {
+                SaidToComeInPlanet(idPlanet);
+                idPlanet = 0;
+                SetZoeListening();
+            }
+            else if(idPlanet == 5 || idPlanet == 6 || idPlanet == 7 || idPlanet == 8)
+            {
+                PlayerCommand(2);
+                SetZoeListening();
+            }
+            else if(idPlanet == 3)
+            {
+                PlayerCommand(3);
+                SetZoeListening();
+            }
+           
         }
     }
 

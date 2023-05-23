@@ -19,7 +19,7 @@ public class Landing : MonoBehaviour
     [SerializeField]
     private GameObject[] planets;
 
-    public delegate void SaidToLandHandler(bool onLand);
+    public delegate void SaidToLandHandler(bool onLand, GameObject planet);
     public event SaidToLandHandler SaidToLand;
 
     public void OnSaidToComeInPlanet(int idPlanet)
@@ -31,7 +31,7 @@ public class Landing : MonoBehaviour
     {
         AudioInput.zoeCanTalk = false;
 
-        SaidToLand(true);
+        SaidToLand(true, GetPlanetGameObjectByTag(GlobalProperties.planetTag));
         SetAnimation(1);
         StartCoroutine(DisablePlanet());
 
@@ -78,26 +78,23 @@ public class Landing : MonoBehaviour
                 SceneManager.LoadScene(Texts.SCENES_MERCURY);
                 break;
             case 2:
-                //venus
-                break;
-            case 3:
-                //earth
+                SceneManager.LoadScene(Texts.SCENES_VENUS);
                 break;
             case 4:
                 SceneManager.LoadScene(Texts.SCENES_MARS);
                 break;
-            case 5:
-                //jupiter
-                break;
-            case 6:
-                //saturn
-                break;
-            case 7:
-                //uranus
-                break;
-            case 8:
-                //neptune
-                break;
         }
+    }
+
+    private GameObject GetPlanetGameObjectByTag(string planet)
+    {
+        foreach (GameObject planetObject in planets)
+        {
+            if (planetObject.CompareTag(planet))
+            {
+                return planetObject;
+            }
+        }
+        return null;
     }
 }
