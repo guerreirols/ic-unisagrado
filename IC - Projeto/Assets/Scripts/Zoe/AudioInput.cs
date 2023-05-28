@@ -40,6 +40,10 @@ public class AudioInput : MonoBehaviour
         {
             actions.Add(Texts.ZOE_ZOI, ZoeAction);
             actions.Add(Texts.ZOE_ZOE, ZoeAction);
+            actions.Add(Texts.ZOE_ZOUI, ZoeAction);
+            actions.Add(Texts.ZOE_ZOUE, ZoeAction);
+
+            actions.Add(Texts.ZOE_CURIOSITY, Curiosity);
 
             actions.Add(Texts.ZOE_TAKE_ME_TO_MERCURY, () => GoToPlanetAction(1, Texts.EVENTS_MERCURY));
             actions.Add(Texts.ZOE_TAKE_ME_TO_VENUS, () => GoToPlanetAction(2, Texts.EVENTS_VENUS));
@@ -69,6 +73,15 @@ public class AudioInput : MonoBehaviour
             zoeIsListening = true;
             PlayerCommand(1);
         }      
+    }
+
+    private void Curiosity()
+    {
+        if (zoeIsListening && GlobalProperties.idPlanet != 0)
+        {
+            PlayerCommand(5);
+            SetZoeListening();
+        }
     }
 
     private void GoToPlanetAction(int idPlanet, string planet)

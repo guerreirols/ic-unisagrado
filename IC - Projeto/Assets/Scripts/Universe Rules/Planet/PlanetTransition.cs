@@ -92,6 +92,7 @@ public class PlanetTransition : MonoBehaviour
         seeingPlanet = true;
         previousPlanetGameObject = currentPlanetGameObject;
         previousPlanetGameObject = currentPlanetGameObject;
+        GlobalProperties.idPreviousPlanet = GlobalProperties.idPlanet;
     }
 
     IEnumerator TimeInTransitionWhitSeeingPlanet()

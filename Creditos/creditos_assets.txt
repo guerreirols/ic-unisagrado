@@ -9,11 +9,12 @@ Planeta Urano | NASA. Disponível em <https://solarsystem.nasa.gov/resources/234
 Planeta Netuno | NASA. Disponível em <https://solarsystem.nasa.gov/resources/2364/neptune-3d-model/>. Acessado em 06. fev. 2023.
 Nave Espacial | Ebal Studios. Disponível em <https://assetstore.unity.com/packages/3d/vehicles/space/hi-rez-spaceships-creator-free-sample-153363>. Acessado em 12. fev. 2023.
 Skybox do Universo | Geoff Dallimore. Disponível em <https://assetstore.unity.com/packages/3d/environments/sci-fi/real-stars-skybox-lite-116333>. Acessado em 12. fev. 2023.
-Asteroides | Mark Dion. Disponível em <https://assetstore.unity.com/packages/3d/environments/asteroids-pack-84988>. Acessado em 12. fev. 2023.
 Textura do Solo de Marte | 3D digital environments. Disponível em <https://assetstore.unity.com/packages/3d/environments/sci-fi/martian-surface-rocky-area-186736>. Acessado em 12. fev. 2023.
 Rochas do Solo de Marte | 3D Amber Light Store. Disponível em <https://assetstore.unity.com/packages/3d/props/4-types-of-rocks-188872>. Acessado em 12. fev. 2023.
 Textura do Solo de Mercúrio | John's Junkyard Assets. Disponível em <https://assetstore.unity.com/packages/2d/textures-materials/floors/pbr-ground-materials-2-dirt-grass-rocky-89369#description>. Acessado em 21. mai. 2023.
 Textura do Solo de Venus | John's Junkyard Assets. Disponível em <https://assetstore.unity.com/packages/2d/textures-materials/floors/pbr-ground-materials-2-dirt-grass-rocky-89369#description>. Acessado em 21. mai. 2023.
-Zoe | Lukas Bobor. Disponível em <https://assetstore.unity.com/packages/3d/characters/robots/drone-guard-175607>. Acessado em 21. abr. 2023.
-Textura dos Portões da Nave Espacial Durante um Pouso | Nobiax / Yughues. Disponível em <https://assetstore.unity.com/packages/2d/textures-materials/metals/yughues-free-metal-materials-12949> Acessado em 16. out. 2023.
+Modelo Zoe | Lukas Bobor. Disponível em <https://assetstore.unity.com/packages/3d/characters/robots/drone-guard-175607>. Acessado em 21. abr. 2023.
+Voz Zoe | TTSFree.com. Disponível em <https://ttsfree.com/pt>. Acessado em 21. abr. 2023.
+Textura dos Portões da Nave Espacial Durante um Pouso | Nobiax / Yughues. Disponível em <https://assetstore.unity.com/packages/2d/textures-materials/metals/yughues-free-metal-materials-12949> Acessado em 16. mai. 2023.
 Fonte dos Textos | Google Fonts. Disponível em <https://fonts.google.com/specimen/Roboto+Mono?preview.text=Solar%20System&preview.text_type=custom>. Acessado em 22. mai. 2023.
+Sons ambiente (Mercúrio, Venus e Marte) | Mixkit. Disponível em <https://mixkit.co>. Acessado em 27. mai. 2023.

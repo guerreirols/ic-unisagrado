@@ -34,9 +34,14 @@
 
     #region Zoe
     //call zoe
-    public const string ZOE_ZOE = "auxiliar";
-    public const string ZOE_ZOI = "olá";
-    
+    public const string ZOE_ZOE = "zoe";
+    public const string ZOE_ZOI = "zoi";
+    public const string ZOE_ZOUI = "zoui";
+    public const string ZOE_ZOUE = "zoue";
+
+    //curiosities
+    public const string ZOE_CURIOSITY = "curiosidade";
+
     //planets
     public const string ZOE_TAKE_ME_TO_MERCURY = "vamos para mercurio";
     public const string ZOE_TAKE_ME_TO_VENUS = "vamos para venus";
