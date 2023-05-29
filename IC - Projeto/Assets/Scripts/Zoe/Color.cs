@@ -33,11 +33,13 @@ public class Color : MonoBehaviour
         if(hasAudio)
         {
             zoeColorAnimator.SetBool(isTalkingString, true);
+            AudioInput.zoeCanTalk = false;
 
             if (!currentAudio.isPlaying)
             {
                 zoeColorAnimator.SetBool(isTalkingString, false);
                 hasAudio = false;
+                AudioInput.zoeCanTalk = true;
             }
         }
 

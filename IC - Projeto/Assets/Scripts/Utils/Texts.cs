@@ -1,8 +1,8 @@
 ﻿public class Texts
 {
     #region Menu
-    public const string MENU_GAME_TITLE = "Solar System";
-    public const string MENU_GAME_SUBTITLE = "The Odyssey";
+    public const string MENU_GAME_TITLE = "Explorando:";
+    public const string MENU_GAME_SUBTITLE = "Sistema Solar";
     public const string MENU_PLAY = " Iniciar";
     public const string MENU_TUTORIAL = " Como Jogar?";
     public const string MENU_CREDITS = " Créditos";
