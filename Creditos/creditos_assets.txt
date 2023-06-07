@@ -17,4 +17,7 @@ Modelo Zoe | Lukas Bobor. Disponível em <https://assetstore.unity.com/packages/
 Voz Zoe | TTSFree.com. Disponível em <https://ttsfree.com/pt>. Acessado em 21. abr. 2023.
 Textura dos Portões da Nave Espacial Durante um Pouso | Nobiax / Yughues. Disponível em <https://assetstore.unity.com/packages/2d/textures-materials/metals/yughues-free-metal-materials-12949> Acessado em 16. mai. 2023.
 Fonte dos Textos | Google Fonts. Disponível em <https://fonts.google.com/specimen/Roboto+Mono?preview.text=Solar%20System&preview.text_type=custom>. Acessado em 22. mai. 2023.
-Sons ambiente (Mercúrio, Venus e Marte) | Mixkit. Disponível em <https://mixkit.co>. Acessado em 27. mai. 2023.
+Sons ambiente (Mercúrio, Venus e Marte) | Mixkit. Disponível em <https://mixkit.co>. Acessado em 27. mai. 2023
+Som botões UI | dawith. Disponível em <https://opengameart.org/content/zippo-click-sound>. Acessado em 06. jun. 2023.
+Ícone Júpiter | Utha Icons. Disponível em <https://icon-icons.com/pt/icone/astronomia-júpiter-galaxy-planeta-espaço-sistema-universo/156875>. Acessado em 06. jun. 2023.
+Ícone Microfone | Dave Gandy. Disponível em <https://icon-icons.com/pt/icone/microfone-preto-de-forma/73491>. Acessado em 06. jun. 2023.

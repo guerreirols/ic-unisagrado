@@ -22,22 +22,19 @@ public class SpaceshipMovement : MonoBehaviour
     {
         if(Leaving.leftPlanet)
         {
-            switch (Random.Range(1, 4))
+            switch (Random.Range(1, 3))
             {
                 case 1:
                     spaceship.Rotate(0f, 0f, 300f);
                     break;
                 case 2:
-                    spaceship.Rotate(280f, 282f, 0f);
-                    break;
-                case 3:
                     spaceship.Rotate(0f, 100f, 300f);
                     break;
             }          
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (!inTransition && !onLanding)
         {

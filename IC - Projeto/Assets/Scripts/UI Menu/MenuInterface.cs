@@ -5,44 +5,48 @@ using UnityEngine.UI;
 
 public class MenuInterface : MonoBehaviour
 {
-    [SerializeField]
+
+    [SerializeField] 
     private Text gameTitleText;
 
-    [SerializeField]
+    [SerializeField] 
     private Text gameSubtitleText;
 
-    [SerializeField]
+    [SerializeField] 
     private Text playText;
 
-    [SerializeField]
+    [SerializeField] 
     private Text tutorialText;
 
-    [SerializeField]
+    [SerializeField] 
     private Text creditsText;
 
-    [SerializeField]
+    [SerializeField] 
     private Text exitText;
 
-    [SerializeField]
+    [SerializeField] 
     private GameObject[] planets;
 
-    [SerializeField]
+    [SerializeField] 
     private Animator cameraAnimator;
 
-    [SerializeField]
+    [SerializeField] 
     private GameObject menu;
 
     [SerializeField]
     private GameObject tutorial;
 
-    [SerializeField]
+    [SerializeField] 
     private GameObject credits;
 
-    [SerializeField]
+    [SerializeField] 
     private GameObject blackScreen;
 
-    [SerializeField]
+    [SerializeField] 
     private GameObject goBackButton;
+
+    [SerializeField] 
+    AudioSource selectedItemAudio;
 
 
     void Start()
@@ -59,11 +63,13 @@ public class MenuInterface : MonoBehaviour
 
     public void StartGame()
     {
+        PlaySelectedItemAudio();
         StartCoroutine(StartGameTransition());
     }
 
     public void Tutorial()
     {
+        PlaySelectedItemAudio();
         cameraAnimator.SetBool("optionSelected", true);
         menu.SetActive(false);
         tutorial.SetActive(true);
@@ -72,6 +78,7 @@ public class MenuInterface : MonoBehaviour
 
     public void Credits()
     {
+        PlaySelectedItemAudio();
         cameraAnimator.SetBool("optionSelected", true);
         menu.SetActive(false);
         credits.SetActive(true);
@@ -80,6 +87,7 @@ public class MenuInterface : MonoBehaviour
 
     public void Back()
     {
+        PlaySelectedItemAudio();
         cameraAnimator.SetBool("optionSelected", false);
         credits.SetActive(false);
         tutorial.SetActive(false);
@@ -89,7 +97,13 @@ public class MenuInterface : MonoBehaviour
 
     public void Exit()
     {
+        PlaySelectedItemAudio();
         Application.Quit();
+    }
+
+    public void PlaySelectedItemAudio()
+    {
+        selectedItemAudio.Play();
     }
 
     IEnumerator StartGameTransition()

@@ -102,10 +102,6 @@ public class AudioInput : MonoBehaviour
                     PlayerCommand(4);
                 }
             }
-            else
-            {
-                PlayerCommand(5);
-            }
         }
     }
 

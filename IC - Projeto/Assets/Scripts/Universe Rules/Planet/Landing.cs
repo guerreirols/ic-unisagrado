@@ -35,14 +35,14 @@ public class Landing : MonoBehaviour
         SetAnimation(1);
         StartCoroutine(DisablePlanet());
 
-        yield return new WaitForSeconds(secondsOnLanding);
+        yield return new WaitForSeconds(400 * Time.deltaTime);
 
         changeScene(idPlanet);
     }
 
     IEnumerator DisablePlanet()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(100 * Time.deltaTime);
 
         SetAnimation(2);
 
