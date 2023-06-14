@@ -43,16 +43,16 @@
     public const string ZOE_CURIOSITY = "curiosidade";
 
     //planets
-    public const string ZOE_TAKE_ME_TO_MERCURY = "vamos para mercurio";
-    public const string ZOE_TAKE_ME_TO_VENUS = "vamos para venus";
-    public const string ZOE_TAKE_ME_TO_EARTH = "vamos para terra";
-    public const string ZOE_TAKE_ME_TO_MARS = "vamos para marte";
-    public const string ZOE_TAKE_ME_TO_JUPITER = "vamos para jupiter";
-    public const string ZOE_TAKE_ME_TO_SATURN = "vamos para saturno";
-    public const string ZOE_TAKE_ME_TO_URANUS = "vamos para urano";
-    public const string ZOE_TAKE_ME_TO_NEPTUNE = "vamos para netuno";
+    public const string ZOE_TAKE_ME_TO_MERCURY = "mercúrio";
+    public const string ZOE_TAKE_ME_TO_VENUS = "vênus";
+    public const string ZOE_TAKE_ME_TO_EARTH = "terra";
+    public const string ZOE_TAKE_ME_TO_MARS = "marte";
+    public const string ZOE_TAKE_ME_TO_JUPITER = "júpiter";
+    public const string ZOE_TAKE_ME_TO_SATURN = "saturno";
+    public const string ZOE_TAKE_ME_TO_URANUS = "urano";
+    public const string ZOE_TAKE_ME_TO_NEPTUNE = "netuno";
 
-    public const string ZOE_TAKE_ME_TO_SPACE = "vamos para ao espaço";
-    public const string ZOE_ENTER_IN_THIS_PLANET = "vamos pousar";
+    public const string ZOE_TAKE_ME_TO_SPACE = "espaço";
+    public const string ZOE_ENTER_IN_THIS_PLANET = "pousar";
     #endregion
 }

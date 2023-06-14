@@ -1,15 +1,10 @@
 ﻿using UnityEngine;
-using UnityEngine.Windows.Speech;
-using System.Collections.Generic;
-using System.Linq;
+using KKSpeech;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class AudioInput : MonoBehaviour
 {
-    private KeywordRecognizer keywordRecognizer;
-    private Dictionary<string, System.Action> actions = new Dictionary<string, System.Action>();
-
     public static bool zoeIsListening;
 
     private int idPlanet;
@@ -30,52 +25,154 @@ public class AudioInput : MonoBehaviour
     public delegate void LeftThePlanetHandler(string planet);
     public event LeftThePlanetHandler LeftThePlanet;
 
-   
+
     public static bool zoeCanTalk = true;
 
-    private void Start() 
+    private string voiceResult;
+
+    void Start()
     {
-        actions.Clear();
-        if(actions.Count() == 0)
+        if (SpeechRecognizer.ExistsOnDevice())
         {
-            actions.Add(Texts.ZOE_ZOI, ZoeAction);
-            actions.Add(Texts.ZOE_ZOE, ZoeAction);
-            actions.Add(Texts.ZOE_ZOUI, ZoeAction);
-            actions.Add(Texts.ZOE_ZOUE, ZoeAction);
+            SpeechRecognizerListener listener = GameObject.FindObjectOfType<SpeechRecognizerListener>();
+            listener.onAuthorizationStatusFetched.AddListener(OnAuthorizationStatusFetched);
+            listener.onErrorDuringRecording.AddListener(OnError);
+            listener.onErrorOnStartRecording.AddListener(OnError);
+            listener.onFinalResults.AddListener(OnFinalResult);
+            listener.onPartialResults.AddListener(OnPartialResult);
+            SpeechRecognizer.RequestAccess();
 
-            actions.Add(Texts.ZOE_CURIOSITY, Curiosity);
-
-            actions.Add(Texts.ZOE_TAKE_ME_TO_MERCURY, () => GoToPlanetAction(1, Texts.EVENTS_MERCURY));
-            actions.Add(Texts.ZOE_TAKE_ME_TO_VENUS, () => GoToPlanetAction(2, Texts.EVENTS_VENUS));
-            actions.Add(Texts.ZOE_TAKE_ME_TO_EARTH, () => GoToPlanetAction(3, Texts.EVENTS_EARTH));
-            actions.Add(Texts.ZOE_TAKE_ME_TO_MARS, () => GoToPlanetAction(4,Texts.EVENTS_MARS));
-            actions.Add(Texts.ZOE_TAKE_ME_TO_JUPITER, () => GoToPlanetAction(5, Texts.EVENTS_JUPITER));
-            actions.Add(Texts.ZOE_TAKE_ME_TO_SATURN, () => GoToPlanetAction(6, Texts.EVENTS_SATURN));
-            actions.Add(Texts.ZOE_TAKE_ME_TO_URANUS, () => GoToPlanetAction(7, Texts.EVENTS_URANUS));
-            actions.Add(Texts.ZOE_TAKE_ME_TO_NEPTUNE, () => GoToPlanetAction(8, Texts.EVENTS_NEPTUNE));
-
-            actions.Add(Texts.ZOE_ENTER_IN_THIS_PLANET, EnterInThisPlanetAction);
-
-            actions.Add(Texts.ZOE_TAKE_ME_TO_SPACE, GoToSpaceAction);
+            SpeechRecognizer.StartRecording(true);
         }
-      
-        keywordRecognizer = new KeywordRecognizer(actions.Keys.ToArray());
-        keywordRecognizer.OnPhraseRecognized += RecognizedSpeech;
-        keywordRecognizer.Start();
+    }
+
+    private void SelectedOption(string result)
+    {
+        result = result.ToLower();
+
+        if(result.Contains(Texts.ZOE_ZOE) || result.Contains(Texts.ZOE_ZOI) 
+            || result.Contains(Texts.ZOE_ZOUI) || result.Contains(Texts.ZOE_ZOUE))
+        {
+            ZoeAction();
+            return;
+        }
+
+        if(result.Contains(Texts.ZOE_CURIOSITY))
+        {
+            CuriosityAction();
+            return;
+        }
+
+        if (result.Contains(Texts.ZOE_ENTER_IN_THIS_PLANET))
+        {
+            EnterInThisPlanetAction();
+            return;
+        }
+
+        if (result.Contains(Texts.ZOE_TAKE_ME_TO_SPACE))
+        {
+            GoToSpaceAction();
+            return;
+        }
+
+        if (result.Contains(Texts.ZOE_TAKE_ME_TO_MERCURY))
+        {
+            GoToPlanetAction(1, Texts.EVENTS_MERCURY);
+            return;
+        }
+
+        if (result.Contains(Texts.ZOE_TAKE_ME_TO_VENUS))
+        {
+            GoToPlanetAction(2, Texts.EVENTS_VENUS);
+            return;
+        }
+
+        if (result.Contains(Texts.ZOE_TAKE_ME_TO_EARTH))
+        {
+            GoToPlanetAction(3, Texts.EVENTS_EARTH);
+            return;
+        }
+
+        if (result.Contains(Texts.ZOE_TAKE_ME_TO_MARS))
+        {
+            GoToPlanetAction(4, Texts.EVENTS_MARS);
+            return;
+        }
+
+        if (result.Contains(Texts.ZOE_TAKE_ME_TO_JUPITER))
+        {
+            GoToPlanetAction(5, Texts.EVENTS_JUPITER);
+            return;
+        }
+
+        if (result.Contains(Texts.ZOE_TAKE_ME_TO_SATURN))
+        {
+            GoToPlanetAction(6, Texts.EVENTS_SATURN);
+            return;
+        }
+
+        if (result.Contains(Texts.ZOE_TAKE_ME_TO_URANUS))
+        {
+            GoToPlanetAction(7, Texts.EVENTS_URANUS);
+            return;
+        }
+
+        if (result.Contains(Texts.ZOE_TAKE_ME_TO_NEPTUNE))
+        {
+            GoToPlanetAction(8, Texts.EVENTS_NEPTUNE);
+            return;
+        }
+
+    }
+
+    private void Update()
+    {
+        if (!SpeechRecognizer.IsRecording())
+        {
+            SpeechRecognizer.StartRecording(true);
+        }
+    }
+
+    public void OnFinalResult(string result)
+    {
+        SelectedOption(result);
+    }
+
+    public void OnPartialResult(string result)
+    {
+        SelectedOption(result);
+    }
+
+    public void OnAuthorizationStatusFetched(AuthorizationStatus status)
+    {
+        switch (status)
+        {
+            case AuthorizationStatus.Authorized:
+                //a
+                break;
+            default:
+                //b
+                break;
+        }
+    }
+
+    public void OnError(string error)
+    {
+        Debug.LogError(error);
     }
 
     private void ZoeAction()
     {
-        if(zoeCanTalk)
+        if (zoeCanTalk)
         {
             StartCoroutine(TimeToTalk(1));
 
             zoeIsListening = true;
             PlayerCommand(1);
-        }      
+        }
     }
 
-    private void Curiosity()
+    private void CuriosityAction()
     {
         if (zoeIsListening && GlobalProperties.idPlanet != 0)
         {
@@ -90,7 +187,7 @@ public class AudioInput : MonoBehaviour
         {
             if (SceneManager.GetActiveScene().name == Texts.SCENES_SPACESHIP)
             {
-                if(idPlanet != GlobalProperties.idPlanet)
+                if (idPlanet != GlobalProperties.idPlanet)
                 {
                     ChosenPlanet(planet);
                     this.idPlanet = idPlanet;
@@ -98,7 +195,8 @@ public class AudioInput : MonoBehaviour
                     GlobalProperties.idPlanet = idPlanet;
                     SetZoeListening();
                 }
-                else {
+                else
+                {
                     PlayerCommand(4);
                 }
             }
@@ -109,25 +207,25 @@ public class AudioInput : MonoBehaviour
     {
         idPlanet = GlobalProperties.idPlanet;
 
-        if(zoeIsListening && idPlanet != 0)
+        if (zoeIsListening && idPlanet != 0)
         {
-            if(idPlanet == 1 || idPlanet == 2 ||  idPlanet == 4)
+            if (idPlanet == 1 || idPlanet == 2 || idPlanet == 4)
             {
                 SaidToComeInPlanet(idPlanet);
                 idPlanet = 0;
                 SetZoeListening();
             }
-            else if(idPlanet == 5 || idPlanet == 6 || idPlanet == 7 || idPlanet == 8)
+            else if (idPlanet == 5 || idPlanet == 6 || idPlanet == 7 || idPlanet == 8)
             {
                 PlayerCommand(2);
                 SetZoeListening();
             }
-            else if(idPlanet == 3)
+            else if (idPlanet == 3)
             {
                 PlayerCommand(3);
                 SetZoeListening();
             }
-           
+
         }
     }
 
@@ -137,8 +235,8 @@ public class AudioInput : MonoBehaviour
         {
             LeftThePlanet(SceneManager.GetActiveScene().name);
             SetZoeListening();
-        } 
-        else if(zoeIsListening && SceneManager.GetActiveScene().name == Texts.SCENES_SPACESHIP)
+        }
+        else if (zoeIsListening && SceneManager.GetActiveScene().name == Texts.SCENES_SPACESHIP)
         {
             //falar pra deixar de ser tonto
         }
@@ -149,16 +247,12 @@ public class AudioInput : MonoBehaviour
         zoeIsListening = !zoeIsListening;
     }
 
-    private void RecognizedSpeech(PhraseRecognizedEventArgs speech)
-    {
-        actions[speech.text].Invoke();
-    }
 
     IEnumerator TimeToTalk(int idCommand)
     {
         yield return new WaitForSeconds(5);
 
-        if(idCommand == 1)
+        if (idCommand == 1)
         {
             zoeIsListening = false;
         }
